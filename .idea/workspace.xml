@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="883f3c3d-fe48-4017-9584-79535764f1cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lc222ak_assign1/Diamond.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lc222ak_assign1/Arrays.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lc222ak_assign1/CountChars.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +17,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Backwards.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Backwards.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -57,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Diamond.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Diamond.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Diamond.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -66,6 +78,28 @@
                 <element signature="method#print#0;class#Diamond#0" expanded="false" />
                 <element signature="method#printNeg#0;class#Diamond#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CountChars.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/CountChars.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="54" lean-forward="true" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Arrays.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Arrays.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,12 +124,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/lc222ak_assign1/Backwards.java" />
         <option value="$PROJECT_DIR$/src/lc222ak_assign1/LargestK.java" />
         <option value="$PROJECT_DIR$/src/lc222ak_assign1/CountDigits.java" />
         <option value="$PROJECT_DIR$/src/lc222ak_assign1/HighLow.java" />
         <option value="$PROJECT_DIR$/src/lc222ak_assign1/Diamond.java" />
+        <option value="$PROJECT_DIR$/src/lc222ak_assign1/CountChars.java" />
+        <option value="$PROJECT_DIR$/src/lc222ak_assign1/Backwards.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/lc222ak_assign1/Arrays.java" />
       </list>
     </option>
   </component>
@@ -179,15 +215,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Diamond">
-    <configuration name="Backwards" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="CountChars" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="lc222ak_assign1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="lc222ak_assign1.Backwards" />
+      <option name="MAIN_CLASS_NAME" value="lc222ak_assign1.CountChars" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -256,14 +292,14 @@
       <module name="2DV600" />
       <envs />
     </configuration>
-    <configuration name="LargestK" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="lc222ak_assign1.*" />
+          <option name="PATTERN" value="com.company.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="lc222ak_assign1.LargestK" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -291,19 +327,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.Backwards" />
-      <item index="1" class="java.lang.String" itemvalue="Application.LargestK" />
-      <item index="2" class="java.lang.String" itemvalue="Application.CountDigits" />
-      <item index="3" class="java.lang.String" itemvalue="Application.HighLow" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Diamond" />
+      <item index="0" class="java.lang.String" itemvalue="Application.CountDigits" />
+      <item index="1" class="java.lang.String" itemvalue="Application.HighLow" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Diamond" />
+      <item index="3" class="java.lang.String" itemvalue="Application.CountChars" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Diamond" />
-        <item index="1" class="java.lang.String" itemvalue="Application.HighLow" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CountDigits" />
-        <item index="3" class="java.lang.String" itemvalue="Application.LargestK" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Backwards" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.CountChars" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Diamond" />
+        <item index="3" class="java.lang.String" itemvalue="Application.HighLow" />
+        <item index="4" class="java.lang.String" itemvalue="Application.CountDigits" />
       </list>
     </recent_temporary>
   </component>
@@ -317,12 +353,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1504078424847</updated>
-      <workItem from="1504078426102" duration="23776000" />
+      <workItem from="1504078426102" duration="29289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23776000" />
+    <option name="totallyTimeSpent" value="29289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1924" height="1063" extended-state="0" />
@@ -368,18 +404,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/lang/Integer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SergioGarciaBeatsTheAmericans.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="70" column="89" lean-forward="true" selection-start-line="70" selection-start-column="89" selection-end-line="70" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Backwards.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -410,14 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Backwards.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Diamond.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -426,6 +462,32 @@
             <element signature="method#print#0;class#Diamond#0" expanded="false" />
             <element signature="method#printNeg#0;class#Diamond#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/CountChars.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="54" lean-forward="true" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lc222ak_assign1/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
