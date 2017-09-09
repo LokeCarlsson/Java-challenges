@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="883f3c3d-fe48-4017-9584-79535764f1cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lc222ak_assign1/Point.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lc222ak_assign1/CountJava.java" afterPath="$PROJECT_DIR$/src/lc222ak_assign1/CountJava.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,6 +74,7 @@
         <option value="$PROJECT_DIR$/src/lc222ak_assign1/CountJava.java" />
         <option value="$PROJECT_DIR$/src/lc222ak_assign1/Point.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -305,12 +304,12 @@
       <workItem from="1504078426102" duration="41008000" />
       <workItem from="1504438754744" duration="21000" />
       <workItem from="1504438803887" duration="4143000" />
-      <workItem from="1504514056360" duration="34162000" />
+      <workItem from="1504514056360" duration="34221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79334000" />
+    <option name="totallyTimeSpent" value="79393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-18" width="1345" height="1080" extended-state="0" />
@@ -528,6 +527,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>
