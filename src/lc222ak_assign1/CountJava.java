@@ -46,7 +46,6 @@ public class CountJava {
             if (i >= 0) {
                 System.out.println(URL.substring(i+1) + "  Lines = " + lineCount);
             }
-
         }
     }
 
