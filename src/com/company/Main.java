@@ -25,7 +25,11 @@ public class Main {
 //
 //        if (p1.isEqualTo(p2))              // True!
 //            System.out.println("The two points are equal");
-        FractionMain fm = new FractionMain();
-        fm.main();
+
+//        FractionMain fm = new FractionMain();
+//        fm.main();
+
+        PlayCardsMain game = new PlayCardsMain();
+        game.play();
     }
 }
