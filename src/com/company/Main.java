@@ -29,7 +29,10 @@ public class Main {
 //        FractionMain fm = new FractionMain();
 //        fm.main();
 
-        PlayCardsMain game = new PlayCardsMain();
-        game.play();
+//        PlayCardsMain game = new PlayCardsMain();
+//        game.play();
+
+        Play123Main game = new Play123Main();
+        game.main();
     }
 }
