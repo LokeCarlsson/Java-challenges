@@ -8,9 +8,11 @@ import java.util.concurrent.ThreadLocalRandom;
 class Deck {
     private List<Card> deck = new ArrayList<Card>();
 
-    Deck() {
-    }
+    Deck() {}
 
+    /**
+     * Generate a 52 card deck from the class Card
+     */
     void generateDeck() {
         Card.Rank[] ranks = Card.Rank.values();
         Card.Suit[] suits = Card.Suit.values();
@@ -22,6 +24,9 @@ class Deck {
         }
     }
 
+    /**
+     * Shuffle the deck of cards using the Fisher–Yates algorithm
+     */
     void shuffle() {
         if (deck.size() < 52) {
             throw new IllegalArgumentException("Deck must contain 52 cards to shuffle!");
@@ -35,10 +40,16 @@ class Deck {
         }
     }
 
+    /**
+     * @return - Removes one card from the deck and returns it
+     */
     Card handOutNextCard() {
         return deck.remove(0);
     }
 
+    /**
+     * @return - The amount of cards left in the deck
+     */
     int deckSize() {
         return deck.size();
     }
