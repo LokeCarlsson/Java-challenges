@@ -25,7 +25,7 @@ public class Main {
 //
 //        if (p1.isEqualTo(p2))              // True!
 //            System.out.println("The two points are equal");
-
-
+        FractionMain fm = new FractionMain();
+        fm.main();
     }
 }
