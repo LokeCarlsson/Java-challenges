@@ -32,7 +32,16 @@ public class Main {
 //        PlayCardsMain game = new PlayCardsMain();
 //        game.play();
 
-        Play123Main game = new Play123Main();
-        game.main();
+//        Play123Main game = new Play123Main();
+//        game.main();
+
+//        Queue queue = new Queue();
+//        queue.enqueue(111);
+//        queue.enqueue(222);
+//        queue.enqueue(333);
+//        for (Object o:queue) {
+//            System.out.println(o);
+//        }
+//        System.out.println(queue.contains(444));
     }
 }
