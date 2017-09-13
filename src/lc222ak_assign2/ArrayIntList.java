@@ -27,15 +27,42 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
     }
 
     public void remove(int index) throws IndexOutOfBoundsException {
-
+        try {
+            if (index > size || index < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            values[index] = 0;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
     }
 
     public int get(int index) throws IndexOutOfBoundsException {
-        return 0;
+        int res = 0;
+        try {
+            if (index > size || index < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            res = values[index];
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 
     public int indexOf(int n) {
-        return 0;
+        int res = 0;
+
+        for (int i = 0; i < size; i++) {
+            if (values[i] == n) {
+                res = i;
+                break;
+            } else {
+                res = -1;
+            }
+        }
+
+        return res;
     }
 
     private void shiftArr(int index) {
