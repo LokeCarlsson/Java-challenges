@@ -8,16 +8,11 @@ import java.util.Arrays;
 public class ArrayIntList extends AbstractIntCollection implements IntList {
 
     public void add(int n) {
-        System.out.println(values.length);
-        System.out.println(size);
-        if (values[size] >= values.length) {
-            System.out.println("OMGMGOGMOMGGOMGOM");
+        if (size == values.length) {
+            resize();
         }
-        values[size++] = n;
-
-        System.out.println(values.length);
-        System.out.println("Size: " + size());
-        System.out.println(Arrays.toString(values));
+        values[size] = n;
+        size++;
     }
 
     public void addAt(int n, int index) throws IndexOutOfBoundsException {
