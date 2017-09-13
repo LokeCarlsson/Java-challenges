@@ -1,0 +1,55 @@
+1. What is the Java Virtual Machine? What is Bytecode?
+    JVM is a virtual machine that runs bytecode that has been compiled from the java code.
+
+2. What is the Java Classpath?
+    It is an location of user defined classes and packages.
+
+3. How do you compile and run your java program without the help of an Integrated Development Environment (IDE) (e.g., an IDE like Eclipse)?
+    Do the following steps where filename is the name of your java file in a terminal.
+    - javac filename.java
+    - java filename
+
+4. What is a JAR file?
+    It is a single compact file archive that hold all the java files for better portability.
+
+5. How do you declare the starting point of a Java application?
+    The main method is the starting point in Java.
+
+6. What is a package? Why is important to declare classes inside packages?
+    A package is like a namespace, where you isolate chosen classes.
+    In packages you are offered protection for classes as well as preventing name conflicts.
+
+7. What is an interface? Why is it important to not change them?
+    It is a reference type which is an collection of abstract methods that needs to be implemented if using the interface.
+    If you change the interface you must change all the implementations of the interface as well.
+
+8. Which visibility levels are available in Java? What is the default visibility for classes, methods, and fields?
+    Public, protected, private and no modifier (Package-private). The default is when you dont use any modifier
+    and the class/method/field becomes package-private which means that they are accessible from within the package.
+
+9. In the context of Java, what is an Exception? And what is an Error?
+    Errors are when the program runs into something faulty and should not be handled.
+    Exceptions should be handled and are a normal occurrence when programming, these are not errors and the program
+    can handle the exception and keep going normally.
+
+10. What happened if your program terminates with an OutOfMemoryError, or NoClassDefFoundError NullPointerException?
+    OutOfMemoryError - Could be caused by a memory leak and the memory runs out in the heap.
+    NoClassDefFoundError - Is when the program has a dependency on a class and is present during compilation
+    but is not found during runtime.
+    NullPointerException - Happens if you try to reference something that points to null.
+
+11. How do you handle Exceptions in your program?
+    You surround the code in a try and throw exceptions that are being caught by a catch after the try and then
+    being handled.
+
+12. Why is it important to test your code/application/product, before you deliver it to your customer/boss/teacher?
+    To make sure it is working as intended and eliminate as many bugs as possible.
+
+13. What is JavaDoc? How do you write documentation with it?
+    It is a tool that helps to generate comments for methods and classes for example.
+    Can be used to describe parameters and return in a method. Here is an example:
+
+    /**
+     * Method to generate a string
+     * @return {String} - returns a string
+     */
