@@ -3,8 +3,6 @@ package lc222ak_assign2;
 import da1031.AbstractIntCollection;
 import da1031.IntList;
 
-import java.util.Arrays;
-
 public class ArrayIntList extends AbstractIntCollection implements IntList {
 
     public void add(int n) {
@@ -17,10 +15,14 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
 
     public void addAt(int n, int index) throws IndexOutOfBoundsException {
         try {
-            values[index] = n;
+            if (index > size || index < 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            shiftArr(index);
             size++;
-        } catch (Exception e) {
-            System.out.println(e);
+            values[index] = n;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
     }
 
@@ -34,5 +36,12 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
 
     public int indexOf(int n) {
         return 0;
+    }
+
+    private void shiftArr(int index) {
+        if(values.length > 1){
+            System.arraycopy(values, index, values, index + 1, values.length - index - 1);
+        }
+
     }
 }
