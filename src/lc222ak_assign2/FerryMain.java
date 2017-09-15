@@ -1,8 +1,10 @@
 package lc222ak_assign2;
 
 public class FerryMain {
-    public void main() {
+    public void main() throws Exception {
         SuperFerry myFerry = new SuperFerry();
-        myFerry.countMoney();
+        Car myCar = new Car(4);
+        myFerry.embark(myCar);
+        System.out.println(myFerry.countMoney());
     }
 }

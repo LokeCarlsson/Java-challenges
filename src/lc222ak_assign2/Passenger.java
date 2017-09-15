@@ -1,9 +1,6 @@
 package lc222ak_assign2;
 
 class Passenger {
-    private int fee = 25;
-
-    public int getFee() {
-        return fee;
-    }
+    final int fee = 25;
+    final int space = 1;
 }

@@ -1,45 +1,97 @@
 package lc222ak_assign2;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class SuperFerry implements Ferry {
 
-    private int passangerSpace = 200;
-    private int carSpace = 50;
+    private ArrayList<Passenger> currentPassengers = new ArrayList<>();
+    private ArrayList<Vehicle> currentVehicles = new ArrayList<>();
+    private int currentMoney;
 
     public int countPassengers() {
-        return 0;
+        int amount = 0;
+        for (Passenger ignored : currentPassengers) {
+            amount++;
+        }
+        return amount;
     }
 
     public int countVehicleSpace() {
-        return 0;
+        int amount = 0;
+        for (Vehicle ignored : currentVehicles) {
+            amount++;
+        }
+        return amount;
     }
 
     public int countMoney() {
-        return 0;
+        return currentMoney;
     }
 
     public void embark(Vehicle v) {
-
+        try {
+            for (Passenger p : v.passengers) {
+                if (!hasRoomFor(p)) {
+                    throw new Exception("The ferry does not have room for more passengers");
+                }
+            }
+            if (!hasSpaceFor(v)) {
+                throw new Exception("The ferry does not have room for more Vehicles");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        currentPassengers.addAll(v.passengers);
+        currentVehicles.add(v);
+        currentMoney += v.fee;
     }
 
     public void embark(Passenger p) {
-
+        try {
+            if (!hasRoomFor(p)) {
+                throw new Exception("The ferry does not have room for more passengers");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        currentPassengers.add(p);
+        currentMoney += p.fee;
     }
 
     public void disembark() {
-
+        currentVehicles.clear();
+        currentPassengers.clear();
     }
 
     public boolean hasSpaceFor(Vehicle v) {
-        return false;
+        int space = 0;
+        for (Vehicle ignored : currentVehicles) {
+            space ++;
+        }
+        return space < 250;
     }
 
     public boolean hasRoomFor(Passenger p) {
-        return false;
+        int space = 0;
+        for (Passenger ignored : currentPassengers) {
+            space ++;
+        }
+        return space < 200;
     }
 
     public Iterator<Vehicle> iterator() {
-        return null;
+        return new VehicleIterator();
+    }
+
+    class VehicleIterator implements Iterator<Vehicle> {
+        private int count = 0;
+        public boolean hasNext() {
+            return count < currentVehicles.size();
+        }
+
+        public Vehicle next() {
+            return currentVehicles.get(count);
+        }
     }
 }

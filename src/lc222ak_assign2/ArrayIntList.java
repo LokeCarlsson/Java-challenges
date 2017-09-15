@@ -15,7 +15,7 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
 
     public void addAt(int n, int index) throws IndexOutOfBoundsException {
         try {
-            if (index > size || index < 0) {
+            if (!checkIndex(index, size)) {
                 throw new IndexOutOfBoundsException();
             }
             shiftArr(index);
