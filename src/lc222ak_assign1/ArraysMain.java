@@ -2,8 +2,10 @@ package lc222ak_assign1;
 
 import lc222ak_assign1.*;
 
+import java.util.Collections;
+
 public class ArraysMain {
-    public static void main(String [] args) throws Error {
+    public static void main(String[] arguments) throws Error {
         sum();
         string();
         addN();
