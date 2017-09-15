@@ -6,5 +6,6 @@ public class FerryMain {
         Car myCar = new Car(4);
         myFerry.embark(myCar);
         System.out.println(myFerry.countMoney());
+        System.out.println(myFerry.countVehicleSpace());
     }
 }

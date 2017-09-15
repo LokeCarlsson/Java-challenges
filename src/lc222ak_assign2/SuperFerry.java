@@ -19,8 +19,8 @@ public class SuperFerry implements Ferry {
 
     public int countVehicleSpace() {
         int amount = 0;
-        for (Vehicle ignored : currentVehicles) {
-            amount++;
+        for (Vehicle v : currentVehicles) {
+            amount += v.space;
         }
         return amount;
     }
