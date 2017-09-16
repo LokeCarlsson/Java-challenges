@@ -32,10 +32,10 @@ public class SuperFerry implements Ferry {
     public void embark(Vehicle v) {
         try {
             for (Passenger p : v.passengers) {
-                if (!hasRoomFor(p)) {
+                if (!hasRoomFor(p) || !hasSpaceFor(v)) {
                     throw new Exception("The ferry does not have room for more passengers");
                 } else {
-                    currentPassengers.addAll(v.passengers);
+                    currentPassengers.add(p);
                 }
             }
             if (!hasSpaceFor(v)) {
@@ -73,7 +73,7 @@ public class SuperFerry implements Ferry {
         for (Vehicle vehicle : currentVehicles) {
             space += vehicle.space;
         }
-        return  space + v.space < 250;
+        return  space + v.space <= 250;
     }
 
     public boolean hasRoomFor(Passenger p) {
@@ -81,7 +81,7 @@ public class SuperFerry implements Ferry {
         for (Passenger passenger : currentPassengers) {
             space += passenger.space;
         }
-        return space + p.space < 200;
+        return space + p.space <= 200;
     }
 
     public Iterator<Vehicle> iterator() {
