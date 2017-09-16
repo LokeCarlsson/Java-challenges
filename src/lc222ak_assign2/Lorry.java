@@ -1,22 +1,18 @@
 package lc222ak_assign2;
 
-import java.util.ArrayList;
-
-public class Lorry extends Vehicle {
-    private ArrayList<Passenger> passengers;
-
-    public Lorry(ArrayList<Passenger> passengers) throws Exception {
-        if (passengers.size() > 2) {
+class Lorry extends Vehicle {
+    Lorry(int numberOfPassengers) throws Exception {
+        if (numberOfPassengers > 2) {
             throw new Exception("A lorry can only carry two passengers");
         }
-        this.passengers = passengers;
-        fee = 300 + getSpace();
+        fee = 300 + additionalFee(numberOfPassengers);
         space = 40;
+        addPassengers(numberOfPassengers);
     }
 
-    private int getSpace() {
+    private int additionalFee(int number) {
         int additionalFee = 0;
-        for (Passenger ignored : passengers) {
+        for (int i = 0; i < number; i++) {
             additionalFee += 15;
         }
         return additionalFee;

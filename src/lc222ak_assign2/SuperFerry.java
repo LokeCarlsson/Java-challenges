@@ -34,29 +34,33 @@ public class SuperFerry implements Ferry {
             for (Passenger p : v.passengers) {
                 if (!hasRoomFor(p)) {
                     throw new Exception("The ferry does not have room for more passengers");
+                } else {
+                    currentPassengers.addAll(v.passengers);
                 }
             }
             if (!hasSpaceFor(v)) {
                 throw new Exception("The ferry does not have room for more Vehicles");
+            } else {
+                currentVehicles.add(v);
+                currentMoney += v.fee;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        currentPassengers.addAll(v.passengers);
-        currentVehicles.add(v);
-        currentMoney += v.fee;
+
     }
 
     public void embark(Passenger p) {
         try {
             if (!hasRoomFor(p)) {
                 throw new Exception("The ferry does not have room for more passengers");
+            } else {
+                currentPassengers.add(p);
+                currentMoney += p.fee;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        currentPassengers.add(p);
-        currentMoney += p.fee;
     }
 
     public void disembark() {
@@ -66,18 +70,18 @@ public class SuperFerry implements Ferry {
 
     public boolean hasSpaceFor(Vehicle v) {
         int space = 0;
-        for (Vehicle ignored : currentVehicles) {
-            space ++;
+        for (Vehicle vehicle : currentVehicles) {
+            space += vehicle.space;
         }
-        return space < 250;
+        return  space + v.space < 250;
     }
 
     public boolean hasRoomFor(Passenger p) {
         int space = 0;
-        for (Passenger ignored : currentPassengers) {
-            space ++;
+        for (Passenger passenger : currentPassengers) {
+            space += passenger.space;
         }
-        return space < 200;
+        return space + p.space < 200;
     }
 
     public Iterator<Vehicle> iterator() {
