@@ -1,4 +1,4 @@
-package lc222ak_assign2;
+package lc222ak_assign2.ex2;
 
 
 class Bus extends Vehicle {

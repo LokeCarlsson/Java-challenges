@@ -1,4 +1,4 @@
-package lc222ak_assign2;
+package lc222ak_assign2.ex1;
 
 public class CollectionMain {
     public static void main() {

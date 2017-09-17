@@ -1,4 +1,4 @@
-package lc222ak_assign2;
+package lc222ak_assign2.ex2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,33 +31,38 @@ public class SuperFerry implements Ferry {
 
     public void embark(Vehicle v) {
         try {
-            for (Passenger p : v.passengers) {
-                if (!hasRoomFor(p) || !hasSpaceFor(v)) {
-                    throw new Exception("The ferry does not have room for more passengers");
-                } else {
-                    currentPassengers.add(p);
-                }
+            if (currentVehicles.contains(v)) {
+                throw new Exception("That passenger has already been embarked!");
             }
             if (!hasSpaceFor(v)) {
                 throw new Exception("The ferry does not have room for more Vehicles");
-            } else {
-                currentVehicles.add(v);
-                currentMoney += v.fee;
             }
+            for (Passenger p : v.passengers) {
+                if (currentPassengers.contains(p)) {
+                    throw new Exception("That passenger has already been embarked!");
+                }
+                if (!hasRoomFor(p)) {
+                    throw new Exception("The ferry does not have room for more passengers");
+                }
+                currentPassengers.add(p);
+            }
+            currentVehicles.add(v);
+            currentMoney += v.fee;
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void embark(Passenger p) {
         try {
             if (!hasRoomFor(p)) {
                 throw new Exception("The ferry does not have room for more passengers");
-            } else {
-                currentPassengers.add(p);
-                currentMoney += p.fee;
             }
+            if (currentPassengers.contains(p)) {
+                throw new Exception("That passenger has already been embarked!");
+            }
+            currentPassengers.add(p);
+            currentMoney += p.fee;
         } catch (Exception e) {
             e.printStackTrace();
         }

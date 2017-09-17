@@ -1,4 +1,4 @@
-package lc222ak_assign2;
+package lc222ak_assign2.ex2;
 
 public interface Ferry extends Iterable<Vehicle>  {
     int countPassengers();             // Number of passengers on board

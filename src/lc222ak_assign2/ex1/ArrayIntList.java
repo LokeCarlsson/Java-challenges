@@ -1,4 +1,4 @@
-package lc222ak_assign2;
+package lc222ak_assign2.ex1;
 
 import da1031.AbstractIntCollection;
 import da1031.IntList;
