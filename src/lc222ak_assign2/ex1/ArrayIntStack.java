@@ -27,13 +27,10 @@ public class ArrayIntStack extends AbstractIntCollection implements IntStack {
 
     public int peek() throws IndexOutOfBoundsException {
         int res = 0;
-        int index = size -1;
-        if (index < 0) {
-            index = 0;
-        }
         if (size <= 0) {
             throw new IndexOutOfBoundsException();
         }
+        int index = size -1;
         res = values[index];
         return res;
     }
