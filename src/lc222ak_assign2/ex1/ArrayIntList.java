@@ -14,45 +14,32 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
     }
 
     public void addAt(int n, int index) throws IndexOutOfBoundsException {
-        try {
-            if (!checkIndex(index, size)) {
-                throw new IndexOutOfBoundsException();
-            }
-            shiftArr(index);
-            size++;
-            values[index] = n;
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+        if (!checkIndex(index, size)) {
+            throw new IndexOutOfBoundsException();
         }
+        shiftArr(index);
+        size++;
+        values[index] = n;
     }
 
     public void remove(int index) throws IndexOutOfBoundsException {
-        try {
-            if (index > size || index < 0) {
-                throw new IndexOutOfBoundsException();
-            }
-            values[index] = 0;
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+        if (index > size || index < 0) {
+            throw new IndexOutOfBoundsException();
         }
+        values[index] = 0;
     }
 
     public int get(int index) throws IndexOutOfBoundsException {
         int res = 0;
-        try {
-            if (index > size || index < 0) {
-                throw new IndexOutOfBoundsException();
-            }
-            res = values[index];
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+        if (index > size || index < 0) {
+            throw new IndexOutOfBoundsException();
         }
+        res = values[index];
         return res;
     }
 
     public int indexOf(int n) {
         int res = 0;
-
         for (int i = 0; i < size; i++) {
             if (values[i] == n) {
                 res = i;
@@ -61,7 +48,6 @@ public class ArrayIntList extends AbstractIntCollection implements IntList {
                 res = -1;
             }
         }
-
         return res;
     }
 

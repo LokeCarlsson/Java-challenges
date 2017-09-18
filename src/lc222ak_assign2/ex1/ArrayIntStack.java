@@ -16,33 +16,25 @@ public class ArrayIntStack extends AbstractIntCollection implements IntStack {
     }
 
     public int pop() throws IndexOutOfBoundsException {
-        int res = 0;
-        try {
-            if (size < 0) {
-                throw new IndexOutOfBoundsException();
-            }
-            res = values[size];
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+        int res;
+        if (size <= 0) {
+            throw new IndexOutOfBoundsException();
         }
-        values[size] = 0;
+        res = values[size];
+        values[size-1] = 0;
         return res;
     }
 
     public int peek() throws IndexOutOfBoundsException {
         int res = 0;
         int index = size -1;
-        try {
-            if (index < 0) {
-                index = 0;
-            }
-            if (size < 0) {
-                throw new IndexOutOfBoundsException();
-            }
-            res = values[index];
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+        if (index < 0) {
+            index = 0;
         }
+        if (size <= 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        res = values[index];
         return res;
     }
 }
