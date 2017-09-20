@@ -2,7 +2,7 @@ package lc222ak_assign2.ex4;
 
 import java.util.Iterator;
 
-public class LinkedQueue implements Queue{
+public class LinkedQueue<T> implements Queue<T>{
     private Node head;
     private Node tail;
     private int size;
@@ -15,7 +15,7 @@ public class LinkedQueue implements Queue{
         return size == 0;
     }
 
-    public void enqueue(Object element) {
+    public void enqueue(T element) {
         Node newNode = new Node(element);
         if (head == null) {
             head = newNode;
@@ -27,11 +27,11 @@ public class LinkedQueue implements Queue{
         size++;
     }
 
-    public Object dequeue() {
+    public T dequeue() {
         if(head == null) {
             throw new IndexOutOfBoundsException();
         }
-        Object returnValue = head.data;
+        T returnValue = head.data;
         if (size == 1) {
             head = null;
             tail = null;
@@ -42,7 +42,7 @@ public class LinkedQueue implements Queue{
         return returnValue;
     }
 
-    public Object first() {
+    public T first() {
         if (head != null) {
             return head.data;
         } else {
@@ -50,7 +50,7 @@ public class LinkedQueue implements Queue{
         }
     }
 
-    public Object last() {
+    public T last() {
         if (tail != null) {
             return tail.data;
         } else {
@@ -58,30 +58,30 @@ public class LinkedQueue implements Queue{
         }
     }
 
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new QueueIterator();
     }
 
     private class Node {
-        Object data;
+        T data;
         Node next;
 
-        Node(Object data) {
+        Node(T data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    private class QueueIterator implements Iterator {
+    private class QueueIterator implements Iterator<T> {
         Node next = head;
 
         public boolean hasNext() {
             return next != null;
         }
 
-        public Object next() {
+        public T next() {
             if (!hasNext()) throw new IndexOutOfBoundsException();
-            Object result = next.data;
+            T result = next.data;
             next = next.next;
             return result;
         }
