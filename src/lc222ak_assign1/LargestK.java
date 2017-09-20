@@ -3,7 +3,7 @@ package lc222ak_assign1;
 import java.util.Scanner;
 
 public class LargestK {
-    public static void main(String[] args) throws Error {
+    public static void main() throws Error {
         Scanner inputText = new Scanner(System.in);
         int inputNumber = Integer.parseInt(inputText.nextLine());
         int highestNumber = 0;

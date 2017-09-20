@@ -89,6 +89,17 @@ public class SuperFerry implements Ferry {
         return space + p.space <= 200;
     }
 
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append("Ferry information: ").append("\n");
+        string.append("Amount of vehicles: ").append(countVehicleSpace()).append("\n");
+        string.append("Amount of passengers: ").append(countPassengers()).append("\n");
+        string.append("Vehicle space left: ").append(250 - countVehicleSpace()).append("\n");
+        string.append("Passenger space left: ").append(200 - countPassengers()).append("\n");
+        string.append("Earned money: ").append(countMoney()).append("kr");
+        return String.valueOf(string);
+    }
+
     public Iterator<Vehicle> iterator() {
         return new VehicleIterator();
     }
