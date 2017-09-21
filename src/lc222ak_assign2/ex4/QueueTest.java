@@ -23,6 +23,28 @@ public class QueueTest {
     }
 
     @Test
+    public void shouldBeSameSizeAfterSize() {
+        queue.size();
+        assertEquals(queue.size(), 0);
+    }
+
+    @Test
+    public void shouldBeSameSizeAfterFirst() {
+        queue.enqueue(123);
+        int actual = queue.size();
+        queue.first();
+        assertEquals(queue.size(), actual);
+    }
+
+    @Test
+    public void shouldBeSameSizeAfterLast() {
+        queue.enqueue(123);
+        int actual = queue.size();
+        queue.last();
+        assertEquals(queue.size(), actual);
+    }
+
+    @Test
     public void shouldNotBeEmptyAfterEnqueue() {
         queue.enqueue(123);
         assertEquals(queue.isEmpty(), false);
@@ -66,7 +88,7 @@ public class QueueTest {
     }
 
     @Test
-    public void queueShouldHaveSameFirstElement() {
+    public void shouldHaveSameFirstElement() {
         queue.enqueue(123);
         assertEquals(queue.first(), (Integer) 123);
     }
@@ -95,6 +117,4 @@ public class QueueTest {
     public void shouldNotBeNull() {
         assertNotNull(queue);
     }
-
-
 }
