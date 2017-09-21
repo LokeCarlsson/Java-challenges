@@ -5,7 +5,6 @@ import java.util.Iterator;
 public class HashWordSet implements WordSet {
     private Node[] buckets = new Node[128];
     private int size;
-    private int count = 0;
 
     public void add(Word word) {
         int pos = getBucketNumber(word.toString());
@@ -62,20 +61,35 @@ public class HashWordSet implements WordSet {
         return size;
     }
     public Iterator<Word> iterator() {
-        return new Iterator<Word>() {
-            public boolean hasNext() {
-                return count < 2;
-            }
+        return new WordIterator();
+    }
 
-            public Word next() {
-                while (buckets[count] == null && count <= size) {
-                    count++;
-                }
-                Word newWord = new Word(buckets[count].toString());
-                count++;
-                return newWord;
+
+    class WordIterator implements Iterator<Word> {
+        private int count = 0;
+        private Node nextNode = null;
+        public boolean hasNext() {
+            return buckets[count].next != null;
+        }
+
+        public Word next() {
+            if (nextNode != null) {
+                nextNode = buckets[count].next;
+                return new Word(buckets[count].toString());
+            } else {
+                nextNode = null;
             }
-        };
+            for (int i = count + 1; i < buckets.length; i++) {
+                if (buckets[i] != null) {
+                    count = i;
+                    if (buckets[i].next != null) {
+                        nextNode = buckets[i].next;
+                    }
+                    return new Word(buckets[i].toString());
+                }
+            }
+            return null;
+        }
     }
 
     private class Node {

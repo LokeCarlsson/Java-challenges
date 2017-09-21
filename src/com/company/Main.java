@@ -10,6 +10,8 @@ import lc222ak_assign2.ex5.IdentifyWordsMain;
 import lc222ak_assign2.ex5.Word;
 import lc222ak_assign2.ex5.WordCount1Main;
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) throws Exception {
 //        FerryMain ferry = new FerryMain();
@@ -19,13 +21,22 @@ public class Main {
 //        WordCount1Main count = new WordCount1Main();
 //        count.main();
         HashWordSet hashWordSet = new HashWordSet();
-        hashWordSet.add(new Word("Loke"));
-        hashWordSet.add(new Word("Sloken"));
-        hashWordSet.add(new Word("LOKE"));
-        System.out.println(hashWordSet.contains(new Word("sloken")));
-        System.out.println("-- > -- >  " + hashWordSet.iterator().next());
-        System.out.println("-- > -- >  " + hashWordSet.iterator().next());
-        System.out.println("-- > -- >  " + hashWordSet.iterator().next());
+//        hashWordSet.add(new Word("Loke"));
+//        hashWordSet.add(new Word("Sloken"));
+//        hashWordSet.add(new Word("LOKE"));
+        for (int i = 0; i < 1000; i++) {
+            hashWordSet.add(new Word(String.valueOf(i)));
+        }
+
+        Iterator<Word> i = hashWordSet.iterator();
+        while (i.hasNext()) {
+            System.out.println(i.next());
+        }
+
+//        for (int i = 0; i < 1000; i++) {
+//            System.out.println("-- > " + i + " -- >  " + hashWordSet.iterator().next());
+//        }
+        System.out.println(hashWordSet.size());
 
     }
 }
