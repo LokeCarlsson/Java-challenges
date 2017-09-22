@@ -102,6 +102,14 @@ public class TreeWordSet implements WordSet {
         return replacement;
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Word w : this) {
+            sb.append(w.toString()).append(" ");
+        }
+        return sb.toString();
+    }
+
     public Iterator<Word> iterator() {
         return new WordIterator();
     }

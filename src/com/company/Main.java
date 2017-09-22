@@ -21,25 +21,24 @@ public class Main {
 //        hashWordSet.add(new Word("Sloken"));
 //        hashWordSet.add(new Word("LOKE"));
 
-//        WordCount2Main wc = new WordCount2Main();
-//        wc.main();
+        WordCount2Main wc = new WordCount2Main();
+        wc.main();
 
-        TreeWordSet TWS = new TreeWordSet();
-        for (int i = 1; i < 10; i++) {
-            TWS.add(new Word("Loke" + String.valueOf(i)));
-        }
+//        TreeWordSet TWS = new TreeWordSet();
+//        for (int i = 1; i < 10; i++) {
+//            TWS.add(new Word("Loke" + String.valueOf(i)));
+//        }
 
-        System.out.println("Del: " + TWS.delete(new Word("Loke5")));
+//        System.out.println("Del: " + TWS.delete(new Word("Loke5")));
 
 //        System.out.println(TWS.size());
 //        System.out.println("Contains? " + TWS.contains(new Word("Loke5")));
 
-        TWS.print();
+//        TWS.print();
 
 //        while(TWS.iterator().hasNext()) {
 //            System.out.println(TWS.iterator().next());
 //        }
-
 
 
 //        for (int i = 0; i < 1000; i++) {
