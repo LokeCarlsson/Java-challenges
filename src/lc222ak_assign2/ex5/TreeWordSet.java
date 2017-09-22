@@ -1,116 +1,177 @@
 package lc222ak_assign2.ex5;
 
 import java.util.Iterator;
+import java.util.Stack;
 
 public class TreeWordSet implements WordSet {
     private Node root = null;
     private int size = 0;
 
     public void add(Word word) {
-        if (root==null) {
-            root = new Node(word.hashCode());
+        if (root == null) {
+            root = new Node(word);
         } else {
-            root.add(word.hashCode());
+            root.add(word);
         }
         size++;
-    }
-
-    public boolean contains(Word word) {
-        return root.contains(word.hashCode());
     }
 
     public int size() {
         return size;
     }
 
+    public boolean contains(Word word) {
+        return root.contains(word.hashCode());
+    }
+
+    public Word delete(Word word) {
+        Node parent = root;
+        Node current = root;
+        boolean isLeftChild = false;
+
+        while (current.word.hashCode() != word.hashCode()) {
+            parent = current;
+            if (current.word.hashCode() > word.hashCode()) {
+                isLeftChild = true;
+                current = current.left;
+            } else {
+                isLeftChild = false;
+                current = current.right;
+            }
+            if (current == null) {
+                return null;
+            }
+        }
+
+        if (current.left == null && current.right == null) {
+            if (current == root) {
+                root = null;
+            }
+            if (isLeftChild) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+        } else if (current.right == null) {
+            if (current == root) {
+                root = current.left;
+            } else if (isLeftChild) {
+                parent.left = current.left;
+            } else {
+                parent.right = current.left;
+            }
+        } else if (current.left == null) {
+            if (current == root) {
+                root = current.right;
+            } else if (isLeftChild) {
+                parent.left = current.right;
+            } else {
+                parent.right = current.right;
+            }
+        } else {
+            Node replacement = getReplacement(current);
+
+            if (current == root) {
+                root = replacement;
+            } else if (isLeftChild) {
+                parent.left = replacement;
+            } else {
+                parent.right = replacement;
+            }
+            replacement.left = current.left;
+        }
+        return current.word;
+    }
+
+    private Node getReplacement(Node removeNode) {
+        Node replacement = null;
+        Node replacementParent = null;
+        Node current = removeNode.right;
+
+        while (current != null) {
+            replacementParent = replacement;
+            replacement = current;
+            current = current.left;
+        }
+
+        if (replacement != removeNode.right) {
+            replacementParent.left = replacement.right;
+            replacement.right = removeNode.right;
+        }
+
+        return replacement;
+    }
+
     public Iterator<Word> iterator() {
         return new WordIterator();
     }
 
-    class WordIterator implements Iterator<Word> {
-        private int count = 0;
-        private Node currentNode = null;
+    public void print() {
+        root.print(root);
+    }
 
-        public boolean hasNext() {
-            return count < size;
-        }
+    class WordIterator implements Iterator<Word> {
+        private Stack<Node> stack = new Stack<>();
+        private Node current = root;
 
         public Word next() {
-//            if (currentNode != null ) {
-//                Node temp = currentNode;
-//                currentNode = currentNode.next;
-//                return new Word(temp.toString());
-//            }
-//            while(count < buckets.length) {
-//                if (buckets[++count] != null) {
-//                    if (buckets[count] != null && buckets[count].next != null) {
-//                        currentNode = buckets[count].next;
-//                    }
-//                    return new Word(buckets[count].toString());
-//                }
-//            }
-            return null;
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.pop();
+            Node node = current;
+            current = current.right;
+            return node.word;
+        }
+
+        public boolean hasNext() {
+            return (!stack.isEmpty() || current != null);
         }
     }
 
-
-    private  class Node {
-        int value;
+    class Node {
+        private Word word;
+        private int value;
         Node left = null;
         Node right = null;
 
-        private Node(int n) {
-            value = n;
+        Node(Word w) {
+            this.value = w.hashCode();
+            this.word = w;
         }
 
-        private void add(int n) {
-            if (n < value) {
+        void add(Word w) {
+            if (w.hashCode() < value) {
                 if (left == null) {
-                    left = new Node(n);
+                    left = new Node(w);
                 } else {
-                    left.add(n);
+                    left.add(w);
                 }
-            } else if (n > value) {
+            } else if (w.hashCode() > value) {
                 if (right == null) {
-                    right = new Node(n);
+                    right = new Node(w);
                 } else {
-                    right.add(n);
+                    right.add(w);
                 }
             }
         }
 
-        private boolean contains(int n) {
+        void print(Node root) {
+            if (root != null) {
+                print(root.left);
+                System.out.print(" " + root.word.toString());
+                print(root.right);
+            }
+        }
+
+        boolean contains(int n) {
             if (n < value) {
                 return left != null && left.contains(n);
-            }
-            else if (n > value) {
+            } else if (n > value) {
                 return right != null && right.contains(n);
             }
             return true;
         }
-
-        private Node remove(int n) {
-            if (n < value) {
-                if (left != null) left = left.remove(n);
-            }
-            else if (n > value) {
-                if (right != null) right = right.remove(n);
-            }
-            else {
-                if (left == null) {
-                    return right;
-                } else if (right == null) {
-                    return left;
-                } else {
-                    if (right.left == null) {
-                        value = right.value;
-                        right = right.right;
-                    }
-//                        value = right.delete min();
-                }
-            }
-            return this;
-        }
-
     }
 }
