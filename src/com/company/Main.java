@@ -15,14 +15,18 @@ public class Main {
 //        ferry.main();
 //        LinkedQueue queue = new LinkedQueue();
 //        IdentifyWordsMain words = new IdentifyWordsMain();
+//        words.main();
 //        WordCount1Main count = new WordCount1Main();
 //        count.main();
 //        hashWordSet.add(new Word("Loke"));
 //        hashWordSet.add(new Word("Sloken"));
 //        hashWordSet.add(new Word("LOKE"));
 
-        WordCount2Main wc = new WordCount2Main();
-        wc.main();
+//        WordCount2Main wc = new WordCount2Main();
+//        wc.main();
+
+        CollectionMain cm = new CollectionMain();
+        cm.main();
 
 //        TreeWordSet TWS = new TreeWordSet();
 //        for (int i = 1; i < 10; i++) {

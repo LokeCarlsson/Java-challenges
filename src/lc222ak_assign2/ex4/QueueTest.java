@@ -7,6 +7,9 @@ public class QueueTest {
 
     private LinkedQueue<Integer> queue;
 
+    /**
+     * Before tests are done initialize a new LinkedQueue
+     */
     @Before
     public void InitializeList() {
         queue = new LinkedQueue<>();

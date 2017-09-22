@@ -9,6 +9,9 @@ public class CollectionTest {
     private ArrayIntList myList;
     private ArrayIntStack myStack;
 
+    /**
+     * Before running tests, initialize a list and a stack
+     */
     @Before
     public void InitializeList() {
         myList = new ArrayIntList();

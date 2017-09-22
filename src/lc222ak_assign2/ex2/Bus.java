@@ -11,6 +11,10 @@ class Bus extends Vehicle {
         space = 20;
     }
 
+    /**
+     * @param number - Number of passengers
+     * @return - Amount of additional fee
+     */
     private int additionalFee(int number) {
         int additionalFee = 0;
         for (int i = 0; i < number; i++) {

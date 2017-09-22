@@ -9,7 +9,7 @@ public class IdentifyWordsMain {
         File file = new File(URL);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         StringBuilder text = new StringBuilder();
-        String line = "";
+        String line;
         while ((line = reader.readLine()) != null) {
             if (line.length() > 0) {
                 String output = line.replaceAll("[^a-zA-Z]", " ").replaceAll(" +", " ").trim();

@@ -7,6 +7,9 @@ class Vehicle {
     int space;
     int fee;
 
+    /**
+     * @param number - Number of passengers to add to the Vehicle
+     */
     void addPassengers(int number) {
         if (number <= space) {
             for (int i = 0; i < number; i++) {

@@ -9,6 +9,9 @@ public class SuperFerry implements Ferry {
     private ArrayList<Vehicle> currentVehicles = new ArrayList<>();
     private int currentMoney;
 
+    /**
+     * @return - The number of passengers in the ferry
+     */
     public int countPassengers() {
         int amount = 0;
         for (Passenger ignored : currentPassengers) {
@@ -17,6 +20,9 @@ public class SuperFerry implements Ferry {
         return amount;
     }
 
+    /**
+     * @return - Number of vehicle space that has been taken
+     */
     public int countVehicleSpace() {
         int amount = 0;
         for (Vehicle v : currentVehicles) {
@@ -25,10 +31,16 @@ public class SuperFerry implements Ferry {
         return amount;
     }
 
+    /**
+     * @return - The number of money collected
+     */
     public int countMoney() {
         return currentMoney;
     }
 
+    /**
+     * @param v - Vehicle to be embarked to the ferry
+     */
     public void embark(Vehicle v) {
         try {
             if (currentVehicles.contains(v)) {
@@ -53,6 +65,9 @@ public class SuperFerry implements Ferry {
         }
     }
 
+    /**
+     * @param p - Passenger to be embarked to the ferry
+     */
     public void embark(Passenger p) {
         try {
             if (!hasRoomFor(p)) {
@@ -68,11 +83,18 @@ public class SuperFerry implements Ferry {
         }
     }
 
+    /**
+     * Clears all Vehicles and Passengers from the ferry
+     */
     public void disembark() {
         currentVehicles.clear();
         currentPassengers.clear();
     }
 
+    /**
+     * @param v - Vehicle to check if has room for
+     * @return - True if there is room, false if otherwise
+     */
     public boolean hasSpaceFor(Vehicle v) {
         int space = 0;
         for (Vehicle vehicle : currentVehicles) {
@@ -81,6 +103,10 @@ public class SuperFerry implements Ferry {
         return  space + v.space <= 250;
     }
 
+    /**
+     * @param p - Passenger to check if has room for
+     * @return - True if there is room, false if otherwise
+     */
     public boolean hasRoomFor(Passenger p) {
         int space = 0;
         for (Passenger passenger : currentPassengers) {
@@ -89,6 +115,9 @@ public class SuperFerry implements Ferry {
         return space + p.space <= 200;
     }
 
+    /**
+     * @return - String with various information of the ferry
+     */
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append("Ferry information: ").append("\n");
@@ -100,16 +129,26 @@ public class SuperFerry implements Ferry {
         return String.valueOf(string);
     }
 
+    /**
+     * @return - A new instance of the Iterator
+     */
     public Iterator<Vehicle> iterator() {
         return new VehicleIterator();
     }
 
     class VehicleIterator implements Iterator<Vehicle> {
         private int count = 0;
+
+        /**
+         * @return - True if there is a next Vehicle
+         */
         public boolean hasNext() {
             return count < currentVehicles.size();
         }
 
+        /**
+         * @return - Next Vehicle in the ferry
+         */
         public Vehicle next() {
             return currentVehicles.get(count);
         }
