@@ -60,32 +60,40 @@ public class HashWordSet implements WordSet {
     public int size() {
         return size;
     }
+
     public Iterator<Word> iterator() {
         return new WordIterator();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Word w : this) {
+            sb.append(w.toString()).append(" ");
+        }
+        return sb.toString();
     }
 
 
     class WordIterator implements Iterator<Word> {
         private int count = 0;
-        private Node nextNode = null;
+        private Node currentNode = null;
+
         public boolean hasNext() {
-            return buckets[count].next != null;
+            return count < buckets.length - 1;
         }
 
         public Word next() {
-            if (nextNode != null) {
-                nextNode = buckets[count].next;
-                return new Word(buckets[count].toString());
-            } else {
-                nextNode = null;
+            if (currentNode != null ) {
+                Node temp = currentNode;
+                currentNode = currentNode.next;
+                return new Word(temp.toString());
             }
-            for (int i = count + 1; i < buckets.length; i++) {
-                if (buckets[i] != null) {
-                    count = i;
-                    if (buckets[i].next != null) {
-                        nextNode = buckets[i].next;
+            while(count < buckets.length) {
+                if (buckets[++count] != null) {
+                    if (buckets[count] != null && buckets[count].next != null) {
+                        currentNode = buckets[count].next;
                     }
-                    return new Word(buckets[i].toString());
+                    return new Word(buckets[count].toString());
                 }
             }
             return null;
