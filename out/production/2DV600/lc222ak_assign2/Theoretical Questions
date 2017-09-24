@@ -46,7 +46,7 @@
     To make sure it is working as intended and eliminate as many bugs as possible.
 
 13. What is JavaDoc? How do you write documentation with it?
-    It is a tool that helps to generate comments for methods and classes for example.
+    It is a tool that helps to generate comments that belong to methods for example.
     Can be used to describe parameters and return in a method. Here is an example:
 
     /**

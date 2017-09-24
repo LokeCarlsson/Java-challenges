@@ -25,8 +25,8 @@ public class Main {
 //        WordCount2Main wc = new WordCount2Main();
 //        wc.main();
 
-        CollectionMain cm = new CollectionMain();
-        cm.main();
+//        CollectionMain cm = new CollectionMain();
+//        cm.main();
 
 //        TreeWordSet TWS = new TreeWordSet();
 //        for (int i = 1; i < 10; i++) {
