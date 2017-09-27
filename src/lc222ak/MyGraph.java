@@ -6,8 +6,7 @@ import java.util.*;
 
 public class MyGraph<E> implements DirectedGraph<E> {
 
-    private List<MyNode> Nodes = new ArrayList<>();
-    private Map<E, MyNode<E>> item2node = new HashMap<>();
+    private Map<E, MyNode<E>> Nodes = new HashMap<>();
     private Set<Node<E>> heads = new HashSet<>();
     private Set<Node<E>> tails = new HashSet<>();
 
@@ -19,27 +18,38 @@ public class MyGraph<E> implements DirectedGraph<E> {
         MyNode<E> newNode = new MyNode<>(item);
         if (item == null) throw new RuntimeException("Item is null");
         if (!containsNodeFor(item)) {
-            Nodes.add(newNode);
+            Nodes.putIfAbsent(item, newNode);
         }
         return newNode;
     }
 
     public Node<E> getNodeFor(E item) {
-        boolean nodePos = Nodes.contains(new MyNode<>(item));
-        return null;
+        return Nodes.get(item);
     }
 
     public boolean addEdgeFor(E from, E to) {
-        return false;
+        if (from == null || to == null) throw new RuntimeException("Received null as input");
+        MyNode<E> src = (MyNode<E>) addNodeFor(from);
+        MyNode<E> tgt = (MyNode<E>) addNodeFor(to);
+
+        if (src.hasSucc(tgt)) {
+            return false;
+        } else {
+            src.addSucc(tgt);
+            tgt.addPred(src);
+            heads.remove(src);
+            tails.remove(tgt);
+            return true;
+        }
     }
 
     public boolean containsNodeFor(E item) {
         if (item == null) throw new RuntimeException("Item is null");
-        return Nodes.contains(new MyNode<>(item));
+        return Nodes.containsKey(item);
     }
 
     public int nodeCount() {
-        return 0;
+        return Nodes.size();
     }
 
     public Iterator<Node<E>> iterator() {

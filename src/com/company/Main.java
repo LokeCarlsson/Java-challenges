@@ -15,7 +15,7 @@ public class Main {
 
         MyGraph<String> graph = new MyGraph<>();
         graph.addNodeFor("Loke");
-        System.out.println(graph.getNodeFor("Loke"));
+        System.out.println(graph.nodeCount());
 
 //        FerryMain ferry = new FerryMain();
 //        ferry.main();

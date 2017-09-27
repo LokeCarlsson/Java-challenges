@@ -16,27 +16,27 @@ public class MyNode<E> extends Node<E> {
     }
 
     public boolean hasSucc(Node<E> node) {
-        return false;
+        return succs.contains(node);
     }
 
     public int outDegree() {
-        return 0;
+        return succs.size();
     }
 
     public Iterator<Node<E>> succsOf() {
-        return new NodeIterator();
+        return succs.iterator();
     }
 
     public boolean hasPred(Node<E> node) {
-        return false;
+        return preds.contains(node);
     }
 
     public int inDegree() {
-        return 0;
+        return preds.size();
     }
 
     public Iterator<Node<E>> predsOf() {
-        return null;
+        return preds.iterator();
     }
 
     protected void addSucc(Node<E> succ) {
@@ -56,16 +56,7 @@ public class MyNode<E> extends Node<E> {
     }
 
     protected void disconnect() {
-        
-    }
-
-    class NodeIterator implements Iterator<Node<E>> {
-        public boolean hasNext() {
-            return false;
-        }
-
-        public Node<E> next() {
-            return null;
-        }
+        preds.clear();
+        succs.clear();
     }
 }
