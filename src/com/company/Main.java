@@ -1,5 +1,6 @@
 package com.company;
 
+import lc222ak.MyGraph;
 import lc222ak_assign1.*;
 import lc222ak_assign2.ex1.*;
 import lc222ak_assign2.ex2.*;
@@ -11,6 +12,11 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+
+        MyGraph<String> graph = new MyGraph<>();
+        graph.addNodeFor("Loke");
+        System.out.println(graph.getNodeFor("Loke"));
+
 //        FerryMain ferry = new FerryMain();
 //        ferry.main();
 //        LinkedQueue queue = new LinkedQueue();
