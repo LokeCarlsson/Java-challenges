@@ -1,5 +1,6 @@
 package com.company;
 
+import graphs.Node;
 import lc222ak.MyGraph;
 import lc222ak_assign1.*;
 import lc222ak_assign2.ex1.*;
@@ -14,13 +15,55 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         MyGraph<String> graph = new MyGraph<>();
-        graph.addNodeFor("Loke");
-        System.out.println(graph.nodeCount());
+        graph.addNodeFor("a");
+        graph.addNodeFor("b");
+        graph.addNodeFor("c");
+        graph.addNodeFor("d");
+        graph.addNodeFor("e");
+        graph.addNodeFor("f");
+        graph.addNodeFor("g");
+
+        graph.addEdgeFor("a", "c");
+        graph.addEdgeFor("a", "b");
+        graph.addEdgeFor("c", "d");
+        graph.addEdgeFor("b", "d");
+        graph.addEdgeFor("d", "b");
+        graph.addEdgeFor("d", "e");
+        graph.addEdgeFor("f", "d");
+        graph.addEdgeFor("e", "f");
+        graph.addEdgeFor("e", "g");
+
+        graph.removeNodeFor("c");
+
+        for (Iterator<Node<String>> it = graph.heads(); it.hasNext(); ) {
+            Node h = it.next();
+            System.out.println("Head: " + h);
+        }
+
+        for (Iterator<Node<String>> it = graph.tails(); it.hasNext(); ) {
+            Node h = it.next();
+            System.out.println("Tails: " + h);
+        }
+
+        System.out.println("Edges: " + graph.edgeCount());
+
+        for (Node g : graph) {
+//            System.out.println(g);
+
+//            Iterator i = g.predsOf();
+//            while (i.hasNext()) {
+//                System.out.println(i.next());
+//            }
+//            Iterator k = g.succsOf();
+//            while (k.hasNext()) {
+//                System.out.println(k.next());
+//            }
+        }
 
 //        FerryMain ferry = new FerryMain();
 //        ferry.main();
 //        LinkedQueue queue = new LinkedQueue();
-//        IdentifyWordsMain words = new IdentifyWordsMain();
+//        IdentifyWordsMain words = new IdentifyWorgdsMain();
 //        words.main();
 //        WordCount1Main count = new WordCount1Main();
 //        count.main();

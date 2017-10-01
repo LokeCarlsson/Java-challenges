@@ -56,6 +56,13 @@ public class MyNode<E> extends Node<E> {
     }
 
     protected void disconnect() {
+        System.out.println(preds.iterator().next());
+        for (Node<E> n : preds) {
+            if (n.hasSucc(this)) {
+                MyNode<E> mn = (MyNode<E>) n;
+                mn.removeSucc(this);
+            }
+        }
         preds.clear();
         succs.clear();
     }

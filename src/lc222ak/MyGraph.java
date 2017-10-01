@@ -15,12 +15,19 @@ public class MyGraph<E> implements DirectedGraph<E> {
     }
 
     public Node<E> addNodeFor(E item) {
-        MyNode<E> newNode = new MyNode<>(item);
         if (item == null) throw new RuntimeException("Item is null");
+        MyNode<E> newNode = new MyNode<>(item);
         if (!containsNodeFor(item)) {
-            Nodes.putIfAbsent(item, newNode);
+            Nodes.put(item, newNode);
+            if (!heads.contains(newNode)) {
+                heads.add(newNode);
+            }
+            if (!tails.contains(newNode)) {
+                tails.add(newNode);
+            }
         }
-        return newNode;
+
+        return Nodes.get(item);
     }
 
     public Node<E> getNodeFor(E item) {
@@ -53,42 +60,62 @@ public class MyGraph<E> implements DirectedGraph<E> {
     }
 
     public Iterator<Node<E>> iterator() {
-        return null;
+        List<Node<E>> list = new ArrayList<>();
+        list.addAll(Nodes.values());
+        return list.iterator();
     }
 
     public Iterator<Node<E>> heads() {
-        return null;
+        return heads.iterator();
     }
 
     public int headCount() {
-        return 0;
+        return heads.size();
     }
 
     public Iterator<Node<E>> tails() {
-        return null;
+        return tails.iterator();
     }
 
     public int tailCount() {
-        return 0;
+        return tails.size();
     }
 
     public List<E> allItems() {
-        return null;
+        List<E> list = new ArrayList<>();
+        list.addAll(Nodes.keySet());
+        return list;
     }
 
     public int edgeCount() {
-        return 0;
+        int res = 0;
+        for(Node n : this) {
+            res += n.outDegree();
+        }
+        return res;
     }
 
     public void removeNodeFor(E item) {
+        Node node = Nodes.get(item);
 
+        Nodes.get(item).disconnect();
+
+        if (heads.contains(node)) {
+            heads.remove(node);
+        }
+
+        if (tails.contains(node)) {
+            tails.remove(node);
+        }
     }
 
     public boolean containsEdgeFor(E from, E to) {
-        return false;
+        MyNode<E> src = (MyNode<E>) getNodeFor(from);
+        MyNode<E> tgt = (MyNode<E>) getNodeFor(to);
+        return src.hasSucc(tgt) && tgt.hasPred(src);
     }
 
     public boolean removeEdgeFor(E from, E to) {
-        return false;
+        return true;
     }
 }
