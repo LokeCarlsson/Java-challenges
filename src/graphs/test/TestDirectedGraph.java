@@ -10,10 +10,7 @@ import graphs.DirectedGraph;
 import graphs.GML;
 import graphs.Node;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 
 import org.junit.After;
@@ -327,7 +324,7 @@ public class TestDirectedGraph  {
 		assertFalse(g.containsEdgeFor(s[1],s[4]));
 		assertFalse(g.containsEdgeFor(s[4],s[5]));
 		assertFalse(g.containsEdgeFor(s[6],s[5]));
-		
+
 		Iterator<Node<String>> it = g.iterator();
 		int count = 0;
 		while (it.hasNext()) {
@@ -364,14 +361,14 @@ public class TestDirectedGraph  {
 			nodes.add(n);
 			items.add(n.item());
 			check_node(n);
-			
+
 			/* head and tails */
 			if (n.outDegree() == 0)
 				tails.add(n);
 			else
 				assertFalse(n.isTail());
 			if (n.inDegree() == 0)
-				heads.add(n);		
+				heads.add(n);
 			else
 				assertFalse(n.isHead());
 		}

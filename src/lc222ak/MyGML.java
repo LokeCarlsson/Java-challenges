@@ -9,6 +9,6 @@ public class MyGML<E> extends GML<E> {
     }
 
     public String toGML() {
-        return null;
+        return "Hello World!";
     }
 }

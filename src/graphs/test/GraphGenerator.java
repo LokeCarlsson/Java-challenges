@@ -222,6 +222,7 @@ public class GraphGenerator {
 		addEdge(dg,3,1); //cycle
 		addEdge(dg,3,4);addEdge(dg,4,5);addEdge(dg,5,3); //cycle
 		addEdge(dg,4,6); //leaf
+		dg.heads();
 		
 		small_cyclic = dg;
 	}

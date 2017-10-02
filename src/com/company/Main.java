@@ -33,7 +33,9 @@ public class Main {
         graph.addEdgeFor("e", "f");
         graph.addEdgeFor("e", "g");
 
-        graph.removeNodeFor("c");
+        graph.removeNodeFor("a");
+
+//        graph.removeEdgeFor("d", "b");
 
         for (Iterator<Node<String>> it = graph.heads(); it.hasNext(); ) {
             Node h = it.next();
@@ -46,6 +48,8 @@ public class Main {
         }
 
         System.out.println("Edges: " + graph.edgeCount());
+
+        System.out.println(graph.toString());
 
         for (Node g : graph) {
 //            System.out.println(g);
