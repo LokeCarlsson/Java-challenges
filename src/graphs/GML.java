@@ -3,6 +3,8 @@
  */
 package graphs;
 
+import lc222ak.MyGraph;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,9 +20,9 @@ import java.io.IOException;
  */
 public abstract class GML<E> {
 	private static int graph_count = 0;
-	protected final DirectedGraph<E> graph;
+	protected final MyGraph<E> graph;
 	
-	public GML(DirectedGraph<E> dg) {
+	public GML(MyGraph<E> dg) {
 		graph = dg;
 	}
 
