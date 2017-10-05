@@ -4,25 +4,53 @@ import graphs.DFS;
 import graphs.DirectedGraph;
 import graphs.Node;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MyDFS<E> implements DFS<E> {
-    
+
+
     public List<Node<E>> dfs(DirectedGraph<E> graph, Node<E> root) {
+        Set<Node<E>> visited = new HashSet<>();
+        List<Node<E>> nodes = new ArrayList<>();
+        Stack<Node<E>> stack = new Stack<>();
+
         if (graph == null || root == null) {
             throw new RuntimeException("Graph or node cannot be null");
         }
-        List<Node<E>> list = new ArrayList<>();
-        for (Node<E> n : graph) {
-            if (n)
-            list.add(n);
+
+        stack.add(root);
+
+        while (!stack.isEmpty()) {
+            Node<E> node = stack.pop();
+            if (!visited.contains(node)) {
+                visited.add(node);
+                nodes.add(node);
+                node.num = nodes.size();
+                for (Iterator<Node<E>> successors = node.succsOf(); successors.hasNext(); ) {
+                    Node<E> succ = successors.next();
+                    if (!visited.contains(succ) && succ != null) {
+                        stack.add(succ);
+                    }
+                }
+            }
         }
-        return list;
+        System.out.println(nodes);
+        return nodes;
     }
 
     public List<Node<E>> dfs(DirectedGraph<E> graph) {
-        return null;
+        List<Node<E>> nodes = new ArrayList<>();
+
+        for (Node<E> n : graph) {
+            List<Node<E>> dfsNodes = dfs(graph, n);
+            for (Node<E> node : dfsNodes) {
+                if (!nodes.contains(node)) {
+                    nodes.add(node);
+                }
+            }
+
+        }
+        return nodes;
     }
 
     public List<Node<E>> postOrder(DirectedGraph<E> g, Node<E> root) {
