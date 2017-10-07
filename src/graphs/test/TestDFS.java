@@ -244,7 +244,8 @@ public class TestDFS  {
     		assertEquals(j+start,node.num);
     	}
     }
-    
+
+
 	@Test
     public void testCyclic() throws Exception {
     	DFS<Integer> dfs = new MyDFS<Integer>();
