@@ -50,29 +50,67 @@ public class MyDFS<E> implements DFS<E> {
         }
 
         List<Node<E>> postOrder = new ArrayList<>();
-        List<Node<E>> res = new ArrayList<>();
         Set<Node<E>> visited = new HashSet<>();
 
-        for (Node<E> n : g) {
-            for (Node<E> p : runPostOrder(n, visited, postOrder)) {
-                if (!res.contains(p)) {
-                    res.add(p);
-                }
+        if (g.headCount() > 0) {
+            for (Iterator<Node<E>> heads = g.heads(); heads.hasNext(); ) {
+                Node<E> node = heads.next();
+                runPostOrder(node, visited, postOrder);
             }
+        } else {
+            runPostOrder(g.getNodeFor(g.allItems().get(0)), visited, postOrder);
         }
-        return res;
+
+        return postOrder;
     }
 
     public List<Node<E>> postOrder(DirectedGraph<E> g, boolean attach_dfs_number) {
+        /*
+        *
+        *  ???
+        *  ???
+        *
+         */
         return null;
     }
 
     public boolean isCyclic(DirectedGraph<E> graph) {
+        for (Node<E> node : postOrder(graph)) {
+            for (Iterator<Node<E>> n = node.succsOf(); n.hasNext();) {
+                if (node.num <= n.next().num) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     public List<Node<E>> topSort(DirectedGraph<E> graph) {
-        return null;
+//        List<Node<E>> postOrderList = postOrder(graph);
+//        Collections.reverse(postOrderList);
+//        return postOrderList;
+        Set<Node<E>> visited = new HashSet<>();
+        List<Node<E>> nodes = new ArrayList<>();
+        Stack<Node<E>> stack = new Stack<>();
+
+        for (Node<E> n : graph) {
+            stack.push(n);
+            while (!stack.isEmpty()) {
+                Node<E> node = stack.pop();
+                if (!visited.contains(node)) {
+                    visited.add(node);
+                    nodes.add(node);
+                    node.num = nodes.size();
+                    for (Iterator<Node<E>> successors = node.succsOf(); successors.hasNext(); ) {
+                        Node<E> succ = successors.next();
+                        if (!visited.contains(succ) && succ != null) {
+                            stack.add(succ);
+                        }
+                    }
+                }
+            }
+        }
+        return nodes;
     }
 
     private List<Node<E>> runDFS(List<Node<E>> nodesToRun) {
