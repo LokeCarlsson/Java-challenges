@@ -77,7 +77,8 @@ public class MyDFS<E> implements DFS<E> {
     public boolean isCyclic(DirectedGraph<E> graph) {
         for (Node<E> node : postOrder(graph)) {
             for (Iterator<Node<E>> n = node.succsOf(); n.hasNext();) {
-                if (node.num <= n.next().num) {
+                int succNumber = n.next().num;
+                if (node.num <= succNumber) {
                     return true;
                 }
             }
@@ -86,31 +87,18 @@ public class MyDFS<E> implements DFS<E> {
     }
 
     public List<Node<E>> topSort(DirectedGraph<E> graph) {
-//        List<Node<E>> postOrderList = postOrder(graph);
-//        Collections.reverse(postOrderList);
-//        return postOrderList;
-        Set<Node<E>> visited = new HashSet<>();
-        List<Node<E>> nodes = new ArrayList<>();
-        Stack<Node<E>> stack = new Stack<>();
-
-        for (Node<E> n : graph) {
-            stack.push(n);
-            while (!stack.isEmpty()) {
-                Node<E> node = stack.pop();
-                if (!visited.contains(node)) {
-                    visited.add(node);
-                    nodes.add(node);
-                    node.num = nodes.size();
-                    for (Iterator<Node<E>> successors = node.succsOf(); successors.hasNext(); ) {
-                        Node<E> succ = successors.next();
-                        if (!visited.contains(succ) && succ != null) {
-                            stack.add(succ);
-                        }
-                    }
-                }
-            }
+        if (isCyclic(graph)) {
+            throw new RuntimeException("topSort not possible on cyclic graphs");
         }
-        return nodes;
+
+        List<Node<E>> nodeList = postOrder(graph);
+        Node<E>[] nodeArray = new Node[graph.nodeCount()];
+
+        for (Node<E> n : nodeList) {
+            nodeArray[graph.nodeCount() - n.num] = n;
+        }
+
+        return Arrays.asList(nodeArray);
     }
 
     private List<Node<E>> runDFS(List<Node<E>> nodesToRun) {
