@@ -15,7 +15,7 @@ public class MyBFS<E> implements BFS<E> {
         List<Node<E>> nodes = new ArrayList<>();
         nodes.add(root);
 
-        return runBFS(nodes);
+        return new ArrayList<>(runBFS(nodes));
     }
 
     public List<Node<E>> bfs(DirectedGraph<E> graph) {
@@ -33,7 +33,7 @@ public class MyBFS<E> implements BFS<E> {
     }
 
     private List<Node<E>> runBFS(List<Node<E>> nodesToRun) {
-        List<Node<E>> nodes = new ArrayList<>();
+        Set<Node<E>> nodes = new HashSet<>();
         Set<Node<E>> visited = new HashSet<>();
 
         while (!nodesToRun.isEmpty()) {
@@ -50,6 +50,6 @@ public class MyBFS<E> implements BFS<E> {
                 }
             }
         }
-        return nodes;
+        return new ArrayList<>(nodes);
     }
 }

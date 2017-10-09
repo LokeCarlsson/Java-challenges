@@ -57,7 +57,6 @@ public class TestAlgorithms {
 		
 		TransitiveClosure<Integer> tc = new MyTransitiveClosure<Integer>();
 		Map<Node<Integer>,Collection<Node<Integer>>> map = tc.computeClosure(dg);
-		
 		/* Compare with manual results */
 		Node<Integer> n = dg.getNodeFor(i[0]);
 		Collection<Node<Integer>> c = map.get(n);

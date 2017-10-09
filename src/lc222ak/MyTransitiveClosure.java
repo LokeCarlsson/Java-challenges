@@ -12,8 +12,7 @@ public class MyTransitiveClosure<E> implements TransitiveClosure<E> {
         MyDFS<E> dfs = new MyDFS<>();
 
         for (Node<E> node : dg) {
-            List<Node<E>> nodes = dfs.dfs(dg, node);
-            map.put(node, nodes);
+            map.put(node, dfs.dfs(dg, node));
         }
 
         return map;

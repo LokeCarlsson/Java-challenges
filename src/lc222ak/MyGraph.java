@@ -6,41 +6,40 @@ import java.util.*;
 
 public class MyGraph<E> implements DirectedGraph<E> {
 
-    private Map<E, MyNode<E>> Nodes = new HashMap<>();
-    private Set<Node<E>> heads = new HashSet<>();
-    private Set<Node<E>> tails = new HashSet<>();
+    private Map<E, MyNode<E>> Nodes;
+    private Set<Node<E>> heads;
+    private Set<Node<E>> tails;
 
     public MyGraph() {
-        //Generate an empty graph
+        Nodes = new HashMap<>();
+        heads = new HashSet<>();
+        tails = new HashSet<>();
     }
 
     public Node<E> addNodeFor(E item) {
         if (item == null) throw new RuntimeException("Item is null");
-        MyNode<E> target = Nodes.get(item);
 
-        if (target == null) {
-            MyNode<E> newNode = new MyNode<>(item);
-            Nodes.put(item, newNode);
-            heads.add(newNode);
-            tails.add(newNode);
-            return newNode;
+        if (containsNodeFor(item)) {
+            return Nodes.get(item);
         }
 
-        return target;
+        MyNode<E> newNode = new MyNode<>(item);
+        Nodes.put(item, newNode);
+        heads.add(newNode);
+        tails.add(newNode);
+        return newNode;
     }
 
     public Node<E> getNodeFor(E item) {
-        if (item == null) {
+        if (!containsNodeFor(item)) {
             throw new RuntimeException("Received null as input");
-        }
-        if (item instanceof Integer && (Integer) item < 0) {
-            throw new RuntimeException("If item is integer it needs to be positive");
         }
         return Nodes.get(item);
     }
 
     public boolean addEdgeFor(E from, E to) {
         if (from == null || to == null) throw new RuntimeException("Received null as input");
+
         MyNode<E> src = (MyNode<E>) addNodeFor(from);
         MyNode<E> tgt = (MyNode<E>) addNodeFor(to);
 
@@ -51,7 +50,6 @@ public class MyGraph<E> implements DirectedGraph<E> {
             tgt.addPred(src);
             tails.remove(src);
             heads.remove(tgt);
-            checkForNewHeadAndTail();
             return true;
         }
     }
