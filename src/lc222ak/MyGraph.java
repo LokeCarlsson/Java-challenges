@@ -40,6 +40,8 @@ public class MyGraph<E> implements DirectedGraph<E> {
     public boolean addEdgeFor(E from, E to) {
         if (from == null || to == null) throw new RuntimeException("Received null as input");
 
+
+
         MyNode<E> src = (MyNode<E>) addNodeFor(from);
         MyNode<E> tgt = (MyNode<E>) addNodeFor(to);
 
@@ -50,6 +52,7 @@ public class MyGraph<E> implements DirectedGraph<E> {
             tgt.addPred(src);
             tails.remove(src);
             heads.remove(tgt);
+            checkForNewHeadAndTail();
             return true;
         }
     }
@@ -93,7 +96,7 @@ public class MyGraph<E> implements DirectedGraph<E> {
 
     public int edgeCount() {
         int res = 0;
-        for(Node n : this) {
+        for (Node n : this) {
             res += n.outDegree();
         }
         return res;

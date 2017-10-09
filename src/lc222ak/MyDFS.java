@@ -72,10 +72,10 @@ public class MyDFS<E> implements DFS<E> {
     }
 
     public boolean isCyclic(DirectedGraph<E> graph) {
-        for (Node<E> node : postOrder(graph)) {
+        for (Node<E> node : graph) {
             for (Iterator<Node<E>> n = node.succsOf(); n.hasNext();) {
-                int succNumber = n.next().num;
-                if (node.num <= succNumber) {
+                Node<E> succ = n.next();
+                if (node.hasSucc(succ)) {
                     return true;
                 }
             }
@@ -135,7 +135,7 @@ public class MyDFS<E> implements DFS<E> {
                 runPostOrder(succ, visited, postOrder);
             }
         }
-        node.num = (postOrder.size() + 1);
+        node.num = postOrder.size() + 1;
         postOrder.add(node);
         return postOrder;
     }
