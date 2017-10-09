@@ -12,14 +12,13 @@ import java.util.*;
  */
 public class MyConnectedComponents<E> implements ConnectedComponents<E> {
     public Collection<Collection<Node<E>>> computeComponents(DirectedGraph<E> dg) {
-        Collection<Collection<Node<E>>> nodes = new ArrayList<>();
-        Collection<Collection<Node<E>>> result = new ArrayList<>();
+        Collection<Collection<Node<E>>> nodes = new HashSet<>();
+        Set<Node<E>> visited = new HashSet<>();
+        MyDFS<E> dfs = new MyDFS<>();
+
         if (dg == null) {
             return nodes;
         }
-
-        Set<Node<E>> visited = new HashSet<>();
-        MyDFS<E> dfs = new MyDFS<>();
 
         for (Node<E> node : dg) {
             if (!visited.contains(node)) {
@@ -32,21 +31,17 @@ public class MyConnectedComponents<E> implements ConnectedComponents<E> {
                     visited.add(n);
                     nodeSet.add(n);
                 }
-                nodes.add(nodeSet);
                 for (Collection<Node<E>> n : nodes) {
-                        nodeSet.addAll(vertices);
-                    if (!Collections.disjoint(n, vertices)) {
-//                        System.out.println("Node " + n);
-//                        System.out.println("Set  " + nodeSet);
-//                        System.out.println("Vertices  " + vertices);
-//                        System.out.println();
-                        result.remove(n);
-                        result.add(nodeSet);
+                    if (!Collections.disjoint(n, nodeSet)) {
+                        n.addAll(nodeSet);
+                        nodeSet.removeAll(vertices);
                     }
+                }
+                if (nodeSet.size() > 0) {
+                    nodes.add(nodeSet);
                 }
             }
         }
-        System.out.println(result);
-        return result;
+        return nodes;
     }
 }
