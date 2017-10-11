@@ -13,10 +13,10 @@ public class MyDFS<E> implements DFS<E> {
             throw new RuntimeException("Graph or node cannot be null");
         }
 
-        Set<Node<E>> nodes = new HashSet<>();
+        List<Node<E>> nodes = new ArrayList<>();
         nodes.add(root);
 
-        return new ArrayList<>(runDFS(nodes));
+        return runDFS(nodes);
     }
 
     public List<Node<E>> dfs(DirectedGraph<E> graph) {
@@ -24,13 +24,13 @@ public class MyDFS<E> implements DFS<E> {
             throw new RuntimeException("Graph cannot be null");
         }
 
-        Set<Node<E>> nodes = new HashSet<>();
+        List<Node<E>> nodes = new ArrayList<>();
 
         for (Node<E> n : graph) {
             nodes.add(n);
         }
 
-        return new ArrayList<>(runDFS(nodes));
+        return runDFS(nodes);
     }
 
     public List<Node<E>> postOrder(DirectedGraph<E> g, Node<E> root) {
@@ -38,10 +38,12 @@ public class MyDFS<E> implements DFS<E> {
             throw new RuntimeException("Graph or node cannot be null");
         }
 
-        Set<Node<E>> postOrder = new HashSet<>();
+        List<Node<E>> postOrder = new ArrayList<>();
         Set<Node<E>> visited = new HashSet<>();
 
-        return new ArrayList<>(runPostOrder(root, visited, postOrder));
+        runPostOrder(root, visited, postOrder);
+
+        return postOrder;
     }
 
     public List<Node<E>> postOrder(DirectedGraph<E> g) {
@@ -49,7 +51,7 @@ public class MyDFS<E> implements DFS<E> {
             throw new RuntimeException("Graph cannot be null");
         }
 
-        Set<Node<E>> postOrder = new HashSet<>();
+        List<Node<E>> postOrder = new ArrayList<>();
         Set<Node<E>> visited = new HashSet<>();
 
         if (g.headCount() > 0) {
@@ -61,7 +63,7 @@ public class MyDFS<E> implements DFS<E> {
             runPostOrder(g.getNodeFor(g.allItems().get(0)), visited, postOrder);
         }
 
-        return new ArrayList<>(postOrder);
+        return postOrder;
     }
 
     public List<Node<E>> postOrder(DirectedGraph<E> g, boolean attach_dfs_number) {
@@ -72,10 +74,10 @@ public class MyDFS<E> implements DFS<E> {
     }
 
     public boolean isCyclic(DirectedGraph<E> graph) {
-        for (Node<E> node : graph) {
+        for (Node<E> node : postOrder(graph)) {
             for (Iterator<Node<E>> n = node.succsOf(); n.hasNext();) {
                 Node<E> succ = n.next();
-                if (node.hasSucc(succ)) {
+                if (node.num <= succ.num) {
                     return true;
                 }
             }
@@ -98,9 +100,9 @@ public class MyDFS<E> implements DFS<E> {
         return Arrays.asList(nodeArray);
     }
 
-    private Set<Node<E>> runDFS(Set<Node<E>> nodesToRun) {
+    private List<Node<E>> runDFS(List<Node<E>> nodesToRun) {
         Set<Node<E>> visited = new HashSet<>();
-        Set<Node<E>> nodes = new HashSet<>();
+        List<Node<E>> nodes = new ArrayList<>();
         Stack<Node<E>> stack = new Stack<>();
 
         for (Node<E> n : nodesToRun) {
@@ -127,7 +129,7 @@ public class MyDFS<E> implements DFS<E> {
     * Tips taken from:
     * http://myitlearnings.com/depth-first-search-dfs-for-traversing-a-graph/
      */
-    private Set<Node<E>> runPostOrder(Node<E> node, Set<Node<E>> visited, Set<Node<E>> postOrder) {
+    private void runPostOrder(Node<E> node, Set<Node<E>> visited, List<Node<E>> postOrder) {
         visited.add(node);
         for (Iterator<Node<E>> successors = node.succsOf(); successors.hasNext(); ) {
             Node<E> succ = successors.next();
@@ -137,6 +139,5 @@ public class MyDFS<E> implements DFS<E> {
         }
         node.num = postOrder.size() + 1;
         postOrder.add(node);
-        return postOrder;
     }
 }

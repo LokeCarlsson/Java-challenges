@@ -12,10 +12,10 @@ public class MyBFS<E> implements BFS<E> {
             throw new RuntimeException("Graph or root is null");
         }
 
-        List<Node<E>> nodes = new ArrayList<>();
+        Queue<Node<E>> nodes = new LinkedList<>();
         nodes.add(root);
 
-        return new ArrayList<>(runBFS(nodes));
+        return runBFS(nodes);
     }
 
     public List<Node<E>> bfs(DirectedGraph<E> graph) {
@@ -23,7 +23,7 @@ public class MyBFS<E> implements BFS<E> {
             throw new RuntimeException("Graph is null");
         }
 
-        List<Node<E>> nodes = new ArrayList<>();
+        Queue<Node<E>> nodes = new LinkedList<>();
 
         for (Node<E> n : graph) {
             nodes.add(n);
@@ -32,12 +32,12 @@ public class MyBFS<E> implements BFS<E> {
         return runBFS(nodes);
     }
 
-    private List<Node<E>> runBFS(List<Node<E>> nodesToRun) {
-        Set<Node<E>> nodes = new HashSet<>();
+    private List<Node<E>> runBFS(Queue<Node<E>> nodesToRun) {
+        List<Node<E>> nodes = new ArrayList<>();
         Set<Node<E>> visited = new HashSet<>();
 
         while (!nodesToRun.isEmpty()) {
-            Node<E> node = nodesToRun.remove(0);
+            Node<E> node = nodesToRun.remove();
             if (!visited.contains(node)) {
                 visited.add(node);
                 nodes.add(node);
@@ -50,6 +50,6 @@ public class MyBFS<E> implements BFS<E> {
                 }
             }
         }
-        return new ArrayList<>(nodes);
+        return nodes;
     }
 }
