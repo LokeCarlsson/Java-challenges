@@ -10,12 +10,19 @@ public class MyGraph<E> implements DirectedGraph<E> {
     private Set<Node<E>> heads;
     private Set<Node<E>> tails;
 
+    /**
+     * Graph constructor
+     */
     public MyGraph() {
         Nodes = new HashMap<>();
         heads = new HashSet<>();
         tails = new HashSet<>();
     }
 
+    /**
+     * @param item,
+     * @return a node
+     */
     public Node<E> addNodeFor(E item) {
         if (item == null) throw new RuntimeException("Item is null");
 
@@ -30,6 +37,10 @@ public class MyGraph<E> implements DirectedGraph<E> {
         return newNode;
     }
 
+    /**
+     * @param item
+     * @return a node
+     */
     public Node<E> getNodeFor(E item) {
         if (!containsNodeFor(item)) {
             throw new RuntimeException("Received null as input");
@@ -37,6 +48,11 @@ public class MyGraph<E> implements DirectedGraph<E> {
         return Nodes.get(item);
     }
 
+    /**
+     * @param from, source node
+     * @param to,   target node
+     * @return true if added successfully
+     */
     public boolean addEdgeFor(E from, E to) {
         if (from == null || to == null) throw new RuntimeException("Received null as input");
 
@@ -54,43 +70,71 @@ public class MyGraph<E> implements DirectedGraph<E> {
         }
     }
 
+    /**
+     * @param item, node to be checked.
+     * @return true if node is found
+     */
     public boolean containsNodeFor(E item) {
         if (item == null) throw new RuntimeException("Item is null");
         return Nodes.containsKey(item);
     }
 
+    /**
+     * @return an interger representing the size of the nodes
+     */
     public int nodeCount() {
         return Nodes.size();
     }
 
+    /**
+     * @return an iterator
+     */
     public Iterator<Node<E>> iterator() {
         List<Node<E>> list = new ArrayList<>();
         list.addAll(Nodes.values());
         return list.iterator();
     }
 
+    /**
+     * @return an iterator over the heads
+     */
     public Iterator<Node<E>> heads() {
         return heads.iterator();
     }
 
+    /**
+     * @return an iteger over the amount of head nodes
+     */
     public int headCount() {
         return heads.size();
     }
 
+    /**
+     * @return a tail iterator
+     */
     public Iterator<Node<E>> tails() {
         return tails.iterator();
     }
 
+    /**
+     * @return an integer over the amount of tail nodes
+     */
     public int tailCount() {
         return tails.size();
     }
 
+    /**
+     * @return a list of all items
+     */
     public List<E> allItems() {
         List<E> list = new ArrayList<>();
         list.addAll(Nodes.keySet());
         return list;
     }
 
+    /**
+     * @return an integer over the amount of edges
+     */
     public int edgeCount() {
         int res = 0;
         for (Node n : this) {
@@ -99,6 +143,9 @@ public class MyGraph<E> implements DirectedGraph<E> {
         return res;
     }
 
+    /**
+     * @param item, node to be removed.
+     */
     public void removeNodeFor(E item) {
         if (item == null) {
             throw new RuntimeException("Cannot check null!");
@@ -115,6 +162,11 @@ public class MyGraph<E> implements DirectedGraph<E> {
         checkForNewHeadAndTail();
     }
 
+    /**
+     * @param from, source node item
+     * @param to,   target node item
+     * @return true if graph has the edge
+     */
     public boolean containsEdgeFor(E from, E to) {
         if (from == null || to == null) {
             throw new RuntimeException("Cannot check null!");
@@ -127,6 +179,11 @@ public class MyGraph<E> implements DirectedGraph<E> {
         return false;
     }
 
+    /**
+     * @param from, source node item
+     * @param to,   target node item
+     * @return true if edge was removed
+     */
     public boolean removeEdgeFor(E from, E to) {
         if (from == null || to == null) {
             throw new RuntimeException("Must not be null");
@@ -142,10 +199,16 @@ public class MyGraph<E> implements DirectedGraph<E> {
         return false;
     }
 
+    /**
+     * @return a string representing the nodes
+     */
     public String toString() {
         return Nodes.toString();
     }
 
+    /**
+     * Check if there are new heads or tails
+     */
     private void checkForNewHeadAndTail() {
         for (Node<E> n : this) {
             if (n.inDegree() == 0) {

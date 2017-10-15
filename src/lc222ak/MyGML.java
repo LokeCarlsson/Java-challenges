@@ -7,10 +7,16 @@ import graphs.Node;
 import java.util.Iterator;
 
 public class MyGML<E> extends GML<E> {
+    /**
+     * @param dg
+     */
     public MyGML(DirectedGraph<E> dg) {
         super((MyGraph<E>) dg);
     }
 
+    /**
+     * @return string that represent a graph
+     */
     public String toGML() {
         MyGraph<E> gi = super.graph;
         StringBuilder sb = new StringBuilder();

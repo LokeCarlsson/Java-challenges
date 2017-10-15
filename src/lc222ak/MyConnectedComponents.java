@@ -11,6 +11,10 @@ import java.util.*;
 * https://stackoverflow.com/questions/19736393/using-bfs-or-dfs-to-determine-the-connectivity-in-a-non-connected-graph
  */
 public class MyConnectedComponents<E> implements ConnectedComponents<E> {
+    /**
+     * @param dg
+     * @return
+     */
     public Collection<Collection<Node<E>>> computeComponents(DirectedGraph<E> dg) {
         Collection<Collection<Node<E>>> nodes = new HashSet<>();
         Set<Node<E>> visited = new HashSet<>();
